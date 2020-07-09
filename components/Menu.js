@@ -7,6 +7,7 @@ let menuItems = [
   'Tech Trends',
   'Music',
   'Log Out'
+  
 ];
 
 /* 
@@ -31,3 +32,32 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+function menuMaker(dataItems){
+
+const menuDiv = document.createElement('div')
+const ul = document.createElement('ul')
+
+menuDiv.appendChild(ul)
+
+menuDiv.className = 'menu'
+
+menuItems.forEach(object =>{
+  const li = document.createElement('li')
+  li.textContent = object
+  ul.appendChild(li)
+ 
+})
+
+const menubtn = document.querySelector(".menu-button")
+menubtn.addEventListener("click", function(){
+  menuDiv.classList.toggle('menu--open')
+})
+
+return menuDiv
+}
+
+const header = document.querySelector(".header")
+const newMenu = menuMaker(menuItems)
+header.appendChild(newMenu)
+  

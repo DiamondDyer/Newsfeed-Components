@@ -85,7 +85,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'New Article',
+    date: 'July 8th, 2020',
+    firstParagraph:'I love my cats',
+    secondParagraph:'Fall and Winter are best seasons',
+    thirdParagraph:'Pineapple on pizza is good'
   }
+
+
 ];
 
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
@@ -111,3 +120,50 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+const plus = "+"
+const article = document.querySelector('.articles')
+
+function articleMaker(dataObj){
+
+const articleDiv = document.createElement('div')
+const h2 = document.createElement('h2')
+const date = document.createElement('p')
+const paragraph = document.createElement('p')
+const paragraph2 = document.createElement('p')
+const paragraph3 = document.createElement('p')
+const span = document.createElement('span')
+
+console.log(span)
+
+articleDiv.appendChild(h2)
+articleDiv.appendChild(date)
+articleDiv.appendChild(paragraph)
+articleDiv.appendChild(paragraph2)
+articleDiv.appendChild(paragraph3)
+articleDiv.appendChild(span)
+
+
+articleDiv.className = 'article'
+date.className = 'date'
+span.className = 'expandButton'
+
+h2.textContent = dataObj.title
+date.textContent = dataObj.date
+paragraph.textContent = dataObj.firstParagraph
+paragraph2.textContent = dataObj.secondParagraph
+paragraph3.textContent = dataObj.thirdParagraph
+span.textContent = plus
+
+span.addEventListener("click", function (){
+  articleDiv.classList.toggle('article-open')
+})
+
+return articleDiv
+}
+
+data.forEach(object =>{
+  const newArticle = articleMaker(object)
+  article.appendChild(newArticle)
+})
+
